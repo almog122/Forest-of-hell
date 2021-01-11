@@ -36,9 +36,8 @@ public class PlayerMovment : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
          {
-         // rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-         }
+            // rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
 
 
     }
