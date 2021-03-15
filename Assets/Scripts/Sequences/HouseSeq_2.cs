@@ -18,9 +18,10 @@ public class HouseSeq_2 : MonoBehaviour
         textBox = talkTextBox.GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+	private void OnTriggerEnter(Collider other)
+	{
+        player.GetComponent<PlayerController>().enabled = false;
+
+
     }
 }
