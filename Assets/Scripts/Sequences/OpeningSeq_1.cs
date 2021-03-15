@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class OpeningSeq : MonoBehaviour
+public class OpeningSeq_1 : MonoBehaviour
 {
 
     public GameObject player;
