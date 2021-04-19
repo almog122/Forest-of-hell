@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunPickUp : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class GunPickUp : MonoBehaviour
         {
             crosshair.SetActive(true);
             actionDisplay.SetActive(true);
+            actionText.GetComponent<Text>().text = "Pick up gun";
             actionText.SetActive(true);
 
         }
@@ -45,6 +47,8 @@ public class GunPickUp : MonoBehaviour
                 this.GetComponent<BoxCollider>().enabled = false;
                 actionDisplay.SetActive(false);
                 actionText.SetActive(false);
+                gunFake.SetActive(false);
+                gunReal.SetActive(true);
             }
 
         }
