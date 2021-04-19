@@ -25,6 +25,7 @@ public class DoorCellOpen : MonoBehaviour
 	{
 		if(distance <= 2f)
 		{
+            actionText.GetComponent<Text>().text = "Open the door";
             actionDisplay.SetActive(true);
             actionText.SetActive(true);
 

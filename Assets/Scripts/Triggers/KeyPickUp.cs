@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KeyPickUp : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class KeyPickUp : MonoBehaviour
 	{
 		if(distance <= 2f)
 		{
+            actionText.GetComponent<Text>().text = "Pick up the key";
             actionDisplay.SetActive(true);
             actionText.SetActive(true);
 
@@ -43,6 +45,7 @@ public class KeyPickUp : MonoBehaviour
                 actionDisplay.SetActive(false);
                 actionText.SetActive(false);
                 door.hasKey = true;
+                Destroy(key);
             }
             
 		}
