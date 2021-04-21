@@ -43,6 +43,11 @@ public class FirstDoorExit : MonoBehaviour
         lightSource.SetActive(true);
         textBox.text = "Huh";
 
+        yield return new WaitForSeconds(0.5f);
+        lightSource.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        lightSource.SetActive(true);
+
         yield return new WaitForSeconds(2f);
 
         head.SetActive(true);
