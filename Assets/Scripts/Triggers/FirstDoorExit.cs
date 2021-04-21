@@ -14,19 +14,21 @@ public class FirstDoorExit : MonoBehaviour
 
     public GameObject lightSource;
 
+    public GameObject head;
+
     Text textBox;
 
     // Start is called before the first frame update
     void Start()
     {
         textBox = talkTextBox.GetComponent<Text>();
-
-        StartCoroutine(screenPlayer());
     }
 
     private void OnTriggerEnter(Collider other)
     {
         player.GetComponent<PlayerController>().enabled = false;
+
+        StartCoroutine(screenPlayer());
 
 
     }
@@ -43,10 +45,12 @@ public class FirstDoorExit : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        head.SetActive(true);
+
         textBox.text = "Make it stoop ";
 
         yield return new WaitForSeconds(1f);
-
+        head.SetActive(false);
         textBox.text = "";
         lightSource.SetActive(false);
         flashlight.SetActive(true);
