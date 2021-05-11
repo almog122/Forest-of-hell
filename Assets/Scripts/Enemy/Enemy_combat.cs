@@ -5,10 +5,11 @@ using UnityEngine.AI;
 
 
 
-public class Enemy_Stats : MonoBehaviour
+public class Enemy_combat : MonoBehaviour
 {
-
-	Enemy_Stats myStats;
+	Player_manager playerManager;
+	
+	Enemy_stats myStats;
 
 	public float attackSpeed = 1f;
 
@@ -23,7 +24,10 @@ public class Enemy_Stats : MonoBehaviour
 
 	void Start()
 	{
-		myStats = GetComponent<Enemy_Stats>();
+		playerManager = Player_manager.instance;
+
+		myStats = GetComponent<Enemy_stats>();
+
 	}
 
 	void Update()
@@ -38,13 +42,13 @@ public class Enemy_Stats : MonoBehaviour
 
 	}
 
-	public void Attack(PlayerStats targetStats)
+	public void Attack()
 	{
 		if (attackCooldown < 0)
 		{
 			isAttacking = true;
 
-			StartCoroutine(DoDamage(targetStats, attackDelay));
+			StartCoroutine(DoDamage(attackDelay));
 
 			attackCooldown = 2f / attackSpeed;
 
@@ -57,11 +61,11 @@ public class Enemy_Stats : MonoBehaviour
 
 
 
-	IEnumerator DoDamage(PlayerStats player, float delay)
+	IEnumerator DoDamage(float delay)
 	{
 		yield return new WaitForSeconds(delay);
 
-	//	player.takeDamage(myStats.damage);
+		playerManager.Player.GetComponent<Player_Stats>().takeDamage(myStats.damage.getValue());
 	}
 
 

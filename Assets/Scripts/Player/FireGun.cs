@@ -34,7 +34,7 @@ public class FireGun : MonoBehaviour
         if(Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), out shot))
 		{
             targetDistance = shot.distance;
-            shot.transform.SendMessage("Damage Enemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+            shot.transform.GetComponent<Enemy_stats>().SendMessage("takeDamage", damageAmount, SendMessageOptions.DontRequireReceiver);
         }
         muzzleFlash.SetActive(true);
         FireSound.Play();

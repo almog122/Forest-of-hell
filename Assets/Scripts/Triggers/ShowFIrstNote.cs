@@ -7,6 +7,7 @@ public class ShowFIrstNote : MonoBehaviour
 {
     public float distance;
     public GameObject actionText;
+    public GameObject image;
 
     // Update is called once per frame
     void Update()
@@ -19,16 +20,18 @@ public class ShowFIrstNote : MonoBehaviour
     {
         if (distance <= 2f)
         {
-            actionText.GetComponent<Text>().text ="Use head to locate key -->" +
-                "\nfrom the head down but in reverse";
+            actionText.GetComponent<Text>().text = "The brain shape out world -->" +
+                "\n so we must go above and beyond" ;
+                
             actionText.SetActive(true);
+            image.SetActive(true);
 
         }
 
         if (distance > 2f)
         {
             actionText.SetActive(false);
-
+            image.SetActive(false);
         }
 
     }
@@ -36,5 +39,6 @@ public class ShowFIrstNote : MonoBehaviour
     private void OnMouseExit()
     {
         actionText.SetActive(false);
+        image.SetActive(false);
     }
 }

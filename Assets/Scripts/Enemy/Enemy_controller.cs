@@ -10,6 +10,8 @@ public class Enemy_controller : MonoBehaviour
 
     NavMeshAgent agent;
 
+    public bool attackRange = false;
+
     //The area the enemy will start to attack
     public float lookRadius = 10f;
 
@@ -37,6 +39,18 @@ public class Enemy_controller : MonoBehaviour
 
             }
 		}
+
+        if(distance <= 2f)
+		{
+            attackRange = true;
+		}
+		else
+		{
+            attackRange = false;
+
+        }
+        
+
     }
 
     void FaceTarget()
@@ -53,7 +67,6 @@ public class Enemy_controller : MonoBehaviour
     //Drawing the collider in the scene
     private void OnDrawGizmosSelected()
     {
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
