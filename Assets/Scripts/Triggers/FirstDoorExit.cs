@@ -37,7 +37,7 @@ public class FirstDoorExit : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         flashlight.SetActive(false);
-        textBox.text = "Whats going on?!";
+        textBox.text = "What's going on?!";
 
         yield return new WaitForSeconds(1f);
         lightSource.SetActive(true);
@@ -52,7 +52,7 @@ public class FirstDoorExit : MonoBehaviour
 
         head.SetActive(true);
 
-        textBox.text = "Make it stoop ";
+        textBox.text = "Make it stop ";
 
         yield return new WaitForSeconds(1f);
         head.SetActive(false);
@@ -60,5 +60,6 @@ public class FirstDoorExit : MonoBehaviour
         lightSource.SetActive(false);
         flashlight.SetActive(true);
         player.GetComponent<PlayerController>().enabled = true;
+        this.GetComponent<BoxCollider>().enabled = false;
     }
 }

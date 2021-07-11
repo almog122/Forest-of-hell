@@ -1,25 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FireGun : MonoBehaviour
 {
 
     public GameObject gun;
+    public Camera cam;
     public GameObject muzzleFlash;
     public AudioSource FireSound;
 
+    Player_Stats playerStats;
+    public GameObject talkTextBox;
+    Text textBox;
+
     bool isFiring = false;
     public float targetDistance;
-    public int damageAmount = 5;
+    public int damageAmount = 25;
 
 
-    // Update is called once per frame
-    void Update()
+	private void Start()
+	{
+        playerStats = Player_manager.instance.Player.GetComponent<Player_Stats>();
+
+        textBox = talkTextBox.GetComponent<Text>();
+
+    }
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            StartCoroutine(FiringGun());
+
+            if (playerStats.currentAmmo > 1)
+            {
+                StartCoroutine(FiringGun());
+            }
+			else
+			{
+                StartCoroutine(EmptyGun());
+            }
 
 
         }
@@ -31,10 +52,15 @@ public class FireGun : MonoBehaviour
         RaycastHit shot;
 
         isFiring = true;
-        if(Physics.Raycast(transform.position, transform.TransformDirection (Vector3.forward), out shot))
-		{
+        if (Physics.Raycast(cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0.0f)), cam.transform.forward, out shot))
+        {
             targetDistance = shot.distance;
-            shot.transform.GetComponent<Enemy_stats>().SendMessage("takeDamage", damageAmount, SendMessageOptions.DontRequireReceiver);
+            if (shot.collider.GetComponentInParent<Enemy_stats>() != null) { 
+                shot.collider.GetComponentInParent<Enemy_stats>().takeDamage(damageAmount);
+            }
+
+
+            playerStats.currentAmmo--;
         }
         muzzleFlash.SetActive(true);
         FireSound.Play();
@@ -44,6 +70,16 @@ public class FireGun : MonoBehaviour
         muzzleFlash.SetActive(false);
         isFiring = false;
 
+    }
+
+    IEnumerator EmptyGun()
+    {
+        textBox.text = "I will keep the last bullet .. just in case";
+        //FireSound.Play(); // need to add empty magzine sound
+
+        yield return new WaitForSeconds(1f);
+
+        textBox.text = "";
     }
 
 

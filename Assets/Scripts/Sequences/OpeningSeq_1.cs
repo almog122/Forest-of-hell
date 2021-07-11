@@ -32,15 +32,15 @@ public class OpeningSeq_1 : MonoBehaviour
         fadeBlackScreen.SetActive(false);
         textBox.text = "Where - where am i?!";
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         textBox.text = "What with this photo , A chip in my barin? ";
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         textBox.text = "I gotta get out of here ";
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         textBox.text = "";
         player.GetComponent<PlayerController>().enabled = true;

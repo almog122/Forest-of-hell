@@ -9,6 +9,7 @@ public class Player_Stats : MonoBehaviour
 
 	public double maxSainty = 100;
 	public int maxHealth = 100;
+	public int currentAmmo = 0;
 
 	//Every other script can get the value but not change it
 	public int currentHealth { get; private set; }
@@ -29,7 +30,7 @@ public class Player_Stats : MonoBehaviour
 	{
 		if (currentSainty > 0)
 		{
-			currentSainty -= Time.deltaTime * 0.5;
+			currentSainty -= Time.deltaTime * 0.2;
 		}
 		else
 		{
@@ -50,6 +51,12 @@ public class Player_Stats : MonoBehaviour
 		{
 			Die();
 		}
+	}
+
+	public void pickUpAmmo()
+	{
+
+		currentAmmo += 7;
 	}
 
 	void Die()

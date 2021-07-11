@@ -13,7 +13,7 @@ public class Enemy_controller : MonoBehaviour
     public bool attackRange = false;
 
     //The area the enemy will start to attack
-    public float lookRadius = 10f;
+    public float lookRadius = 25f;
 
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class Enemy_controller : MonoBehaviour
             }
 		}
 
-        if(distance <= 2f)
+        if(distance <= 3f)
 		{
             attackRange = true;
 		}

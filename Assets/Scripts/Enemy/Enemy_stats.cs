@@ -24,8 +24,8 @@ public class Enemy_stats : MonoBehaviour
 	public void takeDamage(int damageTaken)
 	{
 
-		//make sure that the damage is between 0 to infinity
-		damageTaken = Mathf.Clamp(damageTaken, 0, MaxDamageTaken);
+		//make sure that the damage is between 0 to MaxDamageTaken
+		//damageTaken = Mathf.Clamp(damageTaken, 0, MaxDamageTaken);
 
 		currentHealth -= damageTaken;
 		Debug.Log(transform.name + " takes " + damageTaken + " damage");
@@ -49,7 +49,7 @@ public class Enemy_stats : MonoBehaviour
 
 		isDead = false;
 
-		Destroy(this);
+		Destroy(gameObject);
 		
 	}
 }
